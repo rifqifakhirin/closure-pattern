@@ -21,21 +21,27 @@ public interface ClosureBaseService<T extends NodeBase, U extends ClosureBase> {
 
         closureList.add(closureObject);
 
-        if (Objects.nonNull(entity.getParentId())) {
-            List<U> existingClosureList = this.findByDescendant(entity.getParentId());
+//        ClosureBaseRepository<U> closureBaseRepository = getRepository();
 
-            existingClosureList.forEach(closures -> {
-                closureObject.setAncestor(closures.getAncestor());
-                closureObject.setDepth(closures.getDepth() + RANGE_DEPTH);
-                closureList.add(closureObject);
-            });
+        try {
+            if (Objects.nonNull(entity.getParentId())) {
+                List<U> existingClosureList = this.findByDescendant(entity.getParentId());
+
+                existingClosureList.forEach(closures -> {
+                    closureObject.setAncestor(closures.getAncestor());
+                    closureObject.setDepth(closures.getDepth() + RANGE_DEPTH);
+                    closureList.add(closureObject);
+                });
+            }
+        } catch (Exception e) {
+            e.getCause();
         }
 
-        return saveAll(closureList);
+        return (closureList);
     }
 
     default List<U> findByDescendant(Long descendant) {
-        return getRepository().findAll();
+        return getRepository().findByDescendant(descendant);
     }
 
     default List<U> saveAll(Iterable<U> entities) {

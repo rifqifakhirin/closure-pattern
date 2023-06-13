@@ -2,6 +2,8 @@ package com.example.closure.pattern.repository;
 
 import com.example.closure.pattern.closuretransfer.ClosureBaseRepository;
 import com.example.closure.pattern.entity.TransferApprovalClosure;
+import org.springframework.stereotype.Repository;
 
-public interface TransferApprovalClosureRepository extends ClosureBaseRepository<TransferApprovalClosure> {
+@Repository
+public interface JpaTransferApprovalClosureRepository extends ClosureBaseRepository<TransferApprovalClosure> {
 }

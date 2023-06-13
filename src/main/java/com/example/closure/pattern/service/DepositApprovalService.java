@@ -5,6 +5,7 @@ import com.example.closure.pattern.dto.DepositApprovalRequestDto;
 import com.example.closure.pattern.entity.*;
 import com.example.closure.pattern.repository.DepositApprovalClosureRepository;
 import com.example.closure.pattern.repository.DepositApprovalRepository;
+import com.example.closure.pattern.repository.TransferApprovaClosurelRepository;
 import com.example.closure.pattern.repository.TransferApprovalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -26,8 +27,11 @@ public class DepositApprovalService {
     private TransferApprovalRepository transferApprovalRepository;
 
     @Autowired
-    @Qualifier("DepositClosurePatternService")
-    private ClosurePatternService closurePatternService;
+//    @Qualifier("DepositClosurePatternService")
+    private ClosurePatternService<DepositApproval, DepositApprovalClosure, Long> closurePatternService;
+
+    @Autowired
+    private TransferApprovaClosurelRepository transferApprovaClosurelRepository;
 
     @Autowired
     private TransferApprovalService transferApprovalService;
@@ -78,7 +82,10 @@ public class DepositApprovalService {
 
         TransferApprovalClosure transferApprovalClosure = new TransferApprovalClosure();
 
-        transferApprovalService.addClosure(cashoutApproval, transferApprovalClosure);
+        List<TransferApprovalClosure> approvalClosures = transferApprovalService.addClosure(cashoutApproval, transferApprovalClosure);
+
+        transferApprovaClosurelRepository.saveAll(approvalClosures);
+
         return cashoutApproval;
     }
 

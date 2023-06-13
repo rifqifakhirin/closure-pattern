@@ -1,5 +1,7 @@
 package com.example.closure.pattern.closure;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
