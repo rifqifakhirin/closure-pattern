@@ -1,0 +1,1 @@
+ALTER TABLE generation.manual_one DROP COLUMN inquiry_id;
