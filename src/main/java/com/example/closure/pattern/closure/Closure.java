@@ -9,10 +9,8 @@ public interface Closure {
 //    Long getAncestor();
 
 
-    default Long setAncestor(Long ancestor) {
-        return ancestor;
-    }
-    default Long setDescendant(Long descendant) { return descendant; }
+    default void setAncestor(Long ancestor) {}
+    default void setDescendant(Long descendant) {}
     default Long getAncestor() {
         return null;
     }

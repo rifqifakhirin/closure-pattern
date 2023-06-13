@@ -9,6 +9,7 @@ import java.util.List;
 /**
  * @author raymond on 22/05/23
  */
+
 @NoRepositoryBean
 public interface JpaClosureRepository<T, ID> extends JpaRepository<T, ID> {
 

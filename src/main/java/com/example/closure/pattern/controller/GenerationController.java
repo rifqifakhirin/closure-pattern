@@ -22,34 +22,15 @@ import java.lang.reflect.InvocationTargetException;
 @RequiredArgsConstructor
 public class GenerationController {
 
-    private final ManualOneService manualOneService;
-
     private final DepositApprovalService depositApprovalService;
 
-    @PostMapping("/manual-ones")
-    @ResponseStatus(value = HttpStatus.CREATED)
-    public ResponseEntity<ManualOne> createManual(
-            @RequestBody ManualOneRequestDto manualOneRequestDto) {
-
-        var manual = manualOneService.createManualOne(manualOneRequestDto);
-        return new ResponseEntity<>(manual, HttpStatus.CREATED);
-    }
 
     @PostMapping("/deposit-approvals")
     @ResponseStatus(value = HttpStatus.CREATED)
     public ResponseEntity<DepositApproval> createManual(
             @RequestBody DepositApprovalRequestDto requestDto) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
 
-        DepositApproval depositApproval = depositApprovalService.addNodes(requestDto);
-        return new ResponseEntity<>(depositApproval, HttpStatus.CREATED);
-    }
-
-    @PostMapping("/cashout-approvals")
-    @ResponseStatus(value = HttpStatus.CREATED)
-    public ResponseEntity<CashoutApproval> create(
-            @RequestBody DepositApprovalRequestDto requestDto) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-
-        CashoutApproval depositApproval = depositApprovalService.addNodess(requestDto);
+        DepositApproval depositApproval = depositApprovalService.addNode(requestDto);
         return new ResponseEntity<>(depositApproval, HttpStatus.CREATED);
     }
 

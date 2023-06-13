@@ -1,4 +1,4 @@
-package com.example.closure.pattern.closures;
+package com.example.closure.pattern.closures_unused;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -18,7 +18,6 @@ public class HierarchyService<T extends Nodes, U extends Closures, ID> {
 
     @Autowired
     private ClosuresService<U, ID> closuresService;
-//    @Autowired
     private Class<U> closure;
 
     private static final Integer INITIAL_DEPTH = 0;

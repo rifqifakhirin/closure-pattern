@@ -1,9 +1,8 @@
 package com.example.closure.pattern.configuration;
 
-import com.example.closure.pattern.closures.HierarchyService;
+import com.example.closure.pattern.closure.ClosurePatternService;
 import com.example.closure.pattern.entity.DepositApproval;
 import com.example.closure.pattern.entity.DepositApprovalClosure;
-import com.example.closure.pattern.service.TransferApprovalService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,30 +10,26 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ClosureConfiguration {
 
-//    @Bean
-//    @Qualifier("DepositClosurePatternService")
-//    public ClosurePatternService getDepositApproval() {
-//        return new ClosurePatternService<DepositApproval, DepositApprovalClosure, Long>();
-//    }
 
     @Bean
     @Qualifier("DepositClosurePatternService")
-    public HierarchyService getService() {
-        return new HierarchyService<DepositApproval, DepositApprovalClosure, Long>();
+    public ClosurePatternService getDepositApproval() {
+        return new ClosurePatternService<DepositApproval, DepositApprovalClosure, Long>();
     }
 
-    @Bean
-    @Qualifier("TransferService")
-    public TransferApprovalService getServices() {
-        return new TransferApprovalService();
-    }
+//    @Bean
+//    @Qualifier("TransferService")
+//    public TransferApprovalService getServices() {
+//        return new TransferApprovalService();
+//    }
+
+
 
 //    @Bean
 //    @Qualifier("CashoutClosurePatternService")
 //    public ClosurementPatternService<CashoutApproval, CashoutApprovalClosure, Long> getCashoutClosureService() {
 //        return new ClosurementPatternService<>();
 //    }
-
 
 
 //    @Bean
@@ -46,5 +41,11 @@ public class ClosureConfiguration {
 //                .build();
 //        restTemplate.getMessageConverters().add(getMappingJackson2HttpMessageConverter());
 //        return restTemplate;
+//    }
+
+//    @Bean
+//    @Qualifier("DepositClosurePatternService")
+//    public HierarchyService getService() {
+//        return new HierarchyService<DepositApproval, DepositApprovalClosure, Long>();
 //    }
 }

@@ -1,7 +1,7 @@
-package com.example.closure.pattern.closures;
+package com.example.closure.pattern.closures_unused;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,12 +10,17 @@ import javax.persistence.MappedSuperclass;
 
 @Setter
 @Getter
+@SuperBuilder
 @MappedSuperclass
-public abstract class Nodes {
+public abstract class Closures {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long parentId;
+    private Long ancestor;
+
+    private Long descendant;
+
+    private Integer depth;
 }

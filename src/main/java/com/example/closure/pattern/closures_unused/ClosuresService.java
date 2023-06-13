@@ -1,4 +1,4 @@
-package com.example.closure.pattern.closures;
+package com.example.closure.pattern.closures_unused;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

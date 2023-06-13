@@ -15,22 +15,18 @@ import java.util.List;
  */
 public class ClosurePatternService<T extends Node, V extends Closure, ID> {
 
-  private Class<V> descendantClass;
+//  private Class<V> descendantClass;
+
+//  @Autowired
   JpaClosureRepository<V, ID> jpaClosureRepository;
 
   public ClosurePatternService() {
 
   }
 
-  public ClosurePatternService(Class<V> descendantClass, JpaClosureRepository<V, ID> jpaClosureRepository) {
-    this.descendantClass = descendantClass;
-    this.jpaClosureRepository = jpaClosureRepository;
-  }
-
-  public List<V> createClosure(T entity) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+  public List<V> createClosure(T entity, V closure) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
     List<V> closureList = new ArrayList<>();
 
-    V closure = descendantClass.getConstructor().newInstance();
     closure.setAncestor(entity.getId());
     closure.setDescendant(entity.getId());
 

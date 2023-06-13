@@ -1,6 +1,6 @@
 package com.example.closure.pattern.entity;
 
-import com.example.closure.pattern.closures.Nodes;
+import com.example.closure.pattern.closure.Node;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -14,7 +14,7 @@ import javax.persistence.Id;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class DepositApproval extends Nodes {
+public class DepositApproval implements Node {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

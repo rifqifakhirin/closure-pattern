@@ -15,17 +15,6 @@ public interface ClosureBaseService<T extends NodeBase, U extends ClosureBase> {
     default public List<U> addClosure(T entity, U closureObject) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, ClassNotFoundException {
         List<U> closureList = new ArrayList<>();
 
-//        Class<?> thisClass = getClass();
-//        Type genericSuperclass = thisClass.getGenericSuperclass();
-//        ParameterizedType parameterizedGenericSuperclass = (ParameterizedType) genericSuperclass;
-//        Type[] typeArgs = parameterizedGenericSuperclass.getActualTypeArguments();
-//        Class<U> closure = (Class<U>) typeArgs[0];
-////
-//        Class<?> thisClass = Class.forName("uClass");
-//        Constructor<?> constructorClass = thisClass.getConstructor(new U());
-
-
-//        U closureObject = closure.getConstructor().newInstance();
         closureObject.setAncestor(entity.getId());
         closureObject.setDescendant(entity.getId());
         closureObject.setDepth(INITIAL_DEPTH);
@@ -52,4 +41,14 @@ public interface ClosureBaseService<T extends NodeBase, U extends ClosureBase> {
     default List<U> saveAll(Iterable<U> entities) {
         return getRepository().saveAll(entities);
     }
+
+
+    //        Class<?> thisClass = getClass();
+//        Type genericSuperclass = thisClass.getGenericSuperclass();
+//        ParameterizedType parameterizedGenericSuperclass = (ParameterizedType) genericSuperclass;
+//        Type[] typeArgs = parameterizedGenericSuperclass.getActualTypeArguments();
+//        Class<U> closure = (Class<U>) typeArgs[0];
+////
+//        Class<?> thisClass = Class.forName("uClass");
+//        Constructor<?> constructorClass = thisClass.getConstructor(new U());
 }
